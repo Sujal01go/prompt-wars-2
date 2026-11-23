@@ -2,6 +2,9 @@
 > **Google Prompt Wars Virtual (Hack2Skill) • Challenge 6 Submission**  
 > *Autonomous GenAI-Powered Urban Air Quality Assistant providing Hyperlocal Telemetry, Inversion Stagnation Alerts, Vulnerability Personas, DIY Corsi-Rosenthal Purifier Physics, Low-Emission Commute Optimization, and Impact Transparency for Severe Winter Smog.*
 
+- **🌐 Live Production Deployment**: [https://aeropulse-assistant.web.app](https://aeropulse-assistant.web.app)
+- **💻 Public GitHub Repository**: [https://github.com/Sujal01go/prompt-wars-2](https://github.com/Sujal01go/prompt-wars-2)
+
 ---
 
 ## 🏆 Evaluation Parameters Matrix

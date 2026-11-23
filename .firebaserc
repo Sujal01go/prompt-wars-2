@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "promptwars-gp-96741"
+  },
+  "targets": {
+    "promptwars-gp-96741": {
+      "hosting": {
+        "aeropulse-app": [
+          "aeropulse-assistant"
+        ]
+      }
+    }
+  }
+}

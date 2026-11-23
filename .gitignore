@@ -9,6 +9,13 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
+# Environment Variables
+.env
+.env.*
+!.env.example
+*.local
+
+# Node modules & build
 node_modules
 dist
 dist-ssr

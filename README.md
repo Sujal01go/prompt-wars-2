@@ -11,11 +11,11 @@
 
 | Evaluation Criteria | Implementation Highlights |
 | :--- | :--- |
-| **Code Quality** | Clean modular architecture, TypeScript 5.8 strict typing, zero lint warnings (`oxlint`), idiomatic React 19 state synchronization, separated domain engines (`aqiCalculators`, `corsiRosenthal`, `commuteCalculator`). |
-| **Security** | DOMPurify HTML sanitization against XSS, Base64 obfuscated Gemini API key storage, safe outbound links (`rel="noopener noreferrer"`), local-first privacy (zero health telemetry transmitted to external servers). |
-| **Efficiency** | Vite 8 bundling, 571ms production build time, 128kB gzipped JS, 8.7kB gzipped CSS, 10-minute in-memory telemetry caching to prevent network congestion, memoized calculations (`useMemo`, `useCallback`). |
-| **Testing** | Complete Vitest + React Testing Library test suite with **28 passing tests across 9 test suites** covering mathematical break-points, CADR physics, commute exposure, DOMPurify security, and UI components. |
-| **Accessibility (a11y)** | WCAG AA compliance in both Dark & Light themes, skip-to-content landmark link, semantic HTML landmarks (`<header>`, `<main id="main-content">`, `<nav role="tablist">`, `<footer>`, `role="tabpanel"`), ARIA live regions, full keyboard navigation. |
+| **Code Quality** | Clean modular architecture, TypeScript 5.8 strict typing (`strict: true`, `noImplicitAny`, `noUnusedLocals`), zero lint warnings (`oxlint`), Enterprise React Error Boundary, GitHub Actions CI workflow, separated domain engines (`aqiCalculators`, `corsiRosenthal`, `commuteCalculator`). |
+| **Security** | Strict Content Security Policy (CSP), enterprise HTTP security headers (HSTS, nosniff, DENY, Permissions-Policy), DOMPurify HTML sanitization against XSS, Base64 obfuscated Gemini API key storage, safe `.env.example`, local-first privacy (zero health telemetry transmitted to external servers). |
+| **Efficiency** | Vite 8 bundling, <2.5s production build time, 129kB gzipped JS, 8.9kB gzipped CSS, 10-minute in-memory telemetry caching to prevent network congestion, memoized calculations (`useMemo`, `useCallback`). |
+| **Testing** | Complete Vitest + React Testing Library test suite with **59 passing tests across 20 test suites** covering mathematical break-points, CADR physics, commute exposure, DOMPurify security, storage persistence, and UI components. |
+| **Accessibility (a11y)** | WCAG AA compliance in both Dark & Light themes, skip-to-content landmark link, high-contrast `:focus-visible` rings, reduced motion and high-contrast support, semantic HTML landmarks (`<header>`, `<main id="main-content">`, `<nav role="tablist">`, `<footer>`, `role="tabpanel"`), ARIA live regions, full keyboard navigation. |
 | **Problem Statement Alignment** | Direct solution for **Challenge 6: Urban Air Quality Assistant** — winter thermal inversion alerts, 6 vulnerable household personas, Corsi-Rosenthal box builder, Berkeley Earth cigarette equivalence model, and 24-hour hour-by-hour smog routines. |
 
 ---
@@ -85,7 +85,7 @@ prompt-wars-2/
 │   ├── context/            # AeroContext.tsx, AeroContextInstance.ts
 │   ├── hooks/              # useAero.ts
 │   ├── services/           # airQualityApi.ts, geminiService.ts, personaData.ts, storageService.ts
-│   ├── test/               # Vitest + React Testing Library (9 test suites, 28 tests)
+│   ├── test/               # Vitest + React Testing Library (20 test suites, 59 tests)
 │   ├── types/              # index.ts (Strict TypeScript interfaces)
 │   ├── utils/              # aqiCalculators.ts, commuteCalculator.ts, corsiRosenthal.ts, exportUtils.ts, security.ts
 │   ├── App.tsx             # Main tabbed container with semantic landmarks
@@ -116,7 +116,7 @@ Open `http://localhost:5173` in your browser.
 ```bash
 npm run test
 ```
-Runs 28 unit and component tests with Vitest.
+Runs 59 unit and component tests across 20 test suites with Vitest.
 
 ### 4. Run Linter
 ```bash

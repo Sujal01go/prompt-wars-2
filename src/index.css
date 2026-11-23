@@ -3457,3 +3457,58 @@ button, input, select, textarea {
     max-width: 100%;
   }
 }
+
+/* ==========================================================================
+   Accessibility Enhancements (WCAG 2.1 AA Compliance)
+   ========================================================================== */
+
+/* High-Visibility Keyboard Focus Rings */
+:focus-visible {
+  outline: 2px solid #0ea5e9 !important;
+  outline-offset: 3px !important;
+  box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.25) !important;
+}
+
+/* Reduced Motion Mode for Vestibular Sensitivity */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .gauge-value-arc,
+  .bar-fill,
+  .exceedance-bar-fill,
+  .refresh-btn.spinning svg {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* High Contrast Mode for Screen Readers & Assistive Displays */
+@media (forced-colors: active) {
+  .active-persona-card,
+  .hero-meter-card,
+  .pollutant-card,
+  .cr-simulator-card,
+  .commute-planner-card,
+  .health-impact-card,
+  .eco-actions-card {
+    border: 2px solid CanvasText !important;
+  }
+  .btn-primary-action,
+  .copilot-open-btn,
+  .btn-generate-routine {
+    background-color: Highlight !important;
+    color: HighlightText !important;
+    border: 1px solid CanvasText !important;
+  }
+  .badge-challenge,
+  .eval-chip,
+  .hotspot-badge {
+    border: 1px solid CanvasText !important;
+  }
+}

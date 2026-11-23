@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, screen, fireEvent } from '@testing-library/react'
+import { render, screen, fireEvent, act } from '@testing-library/react'
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import * as airApi from '../services/airQualityApi.ts'
 import { AeroProvider } from '../context/AeroContext.tsx'
@@ -46,11 +46,13 @@ describe('PersonaShield Component', () => {
   })
 
   it('renders all 6 persona tabs and displays active persona guidance', async () => {
-    render(
-      <AeroProvider>
-        <PersonaShield />
-      </AeroProvider>
-    )
+    await act(async () => {
+      render(
+        <AeroProvider>
+          <PersonaShield />
+        </AeroProvider>
+      )
+    })
 
     // Check presence of persona tabs
     expect(await screen.findByText(/Infants & Children/i)).toBeInTheDocument()
@@ -62,16 +64,20 @@ describe('PersonaShield Component', () => {
   })
 
   it('switches persona details when a tab is clicked', async () => {
-    render(
-      <AeroProvider>
-        <PersonaShield />
-      </AeroProvider>
-    )
+    await act(async () => {
+      render(
+        <AeroProvider>
+          <PersonaShield />
+        </AeroProvider>
+      )
+    })
 
     const childBtn = await screen.findByText(/Infants & Children/i)
-    fireEvent.click(childBtn)
+    await act(async () => {
+      fireEvent.click(childBtn)
+    })
 
     // Should update active view
-    expect(screen.getByText(/Pediatric Airway Shield/i)).toBeInTheDocument()
+    expect(await screen.findByText(/Pediatric Airway Shield/i)).toBeInTheDocument()
   })
 })

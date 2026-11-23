@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, screen } from '@testing-library/react'
+import { render, screen, act } from '@testing-library/react'
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import * as airApi from '../services/airQualityApi.ts'
 import { AeroProvider } from '../context/AeroContext.tsx'
@@ -45,23 +45,27 @@ describe('WCAG AA Accessibility Compliance Tests', () => {
     })
   })
 
-  it('includes skip-to-content landmark link', () => {
-    render(
-      <AeroProvider>
-        <App />
-      </AeroProvider>
-    )
+  it('includes skip-to-content landmark link', async () => {
+    await act(async () => {
+      render(
+        <AeroProvider>
+          <App />
+        </AeroProvider>
+      )
+    })
 
     const mainLandmark = screen.getByRole('main')
     expect(mainLandmark).toHaveAttribute('id', 'main-content')
   })
 
-  it('provides proper role="tablist" and role="tab" semantic controls', () => {
-    render(
-      <AeroProvider>
-        <App />
-      </AeroProvider>
-    )
+  it('provides proper role="tablist" and role="tab" semantic controls', async () => {
+    await act(async () => {
+      render(
+        <AeroProvider>
+          <App />
+        </AeroProvider>
+      )
+    })
 
     const tablists = screen.getAllByRole('tablist')
     expect(tablists.length).toBeGreaterThan(0)
@@ -70,12 +74,14 @@ describe('WCAG AA Accessibility Compliance Tests', () => {
     expect(tabs.length).toBeGreaterThanOrEqual(5)
   })
 
-  it('verifies evaluation criteria rubrics are presented in navigation banner', () => {
-    render(
-      <AeroProvider>
-        <App />
-      </AeroProvider>
-    )
+  it('verifies evaluation criteria rubrics are presented in navigation banner', async () => {
+    await act(async () => {
+      render(
+        <AeroProvider>
+          <App />
+        </AeroProvider>
+      )
+    })
 
     const banners = screen.getAllByText(/Google Prompt Wars/i)
     expect(banners.length).toBeGreaterThan(0)

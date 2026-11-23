@@ -232,6 +232,22 @@ export const AeroProvider: React.FC<AeroProviderProps> = ({ children }) => {
     [addToast]
   )
 
+  const addEcoAction = useCallback(
+    (action: EcoAction) => {
+      setEcoActionsState((prev) => {
+        const next = [...prev, action]
+        storageService.setEcoActions(next)
+        return next
+      })
+      addToast({
+        type: 'success',
+        title: 'Action Added',
+        message: 'Logged personal mitigation step with positive impact!',
+      })
+    },
+    [addToast]
+  )
+
   // Corsi-Rosenthal Config
   const updateCorsiConfig = useCallback(
     (cfg: Partial<CorsiRosenthalConfig>) => {
@@ -262,6 +278,7 @@ export const AeroProvider: React.FC<AeroProviderProps> = ({ children }) => {
     setApiKey,
     ecoActions,
     toggleEcoAction,
+    addEcoAction,
     theme,
     toggleTheme,
     corsiConfig,

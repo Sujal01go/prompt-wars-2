@@ -9,7 +9,7 @@ import { useAero } from '../../hooks/useAero.ts'
 import type { EcoAction } from '../../types/index.ts'
 
 export const EcoActionsTracker: React.FC = () => {
-  const { ecoActions, toggleEcoAction, addToast } = useAero()
+  const { ecoActions, toggleEcoAction, addEcoAction } = useAero()
   const [showAddForm, setShowAddForm] = useState(false)
   const [newTitle, setNewTitle] = useState('')
   const [newCo2, setNewCo2] = useState(1.5)
@@ -41,14 +41,9 @@ export const EcoActionsTracker: React.FC = () => {
       completed: true,
     }
 
-    ecoActions.push(newAction)
+    addEcoAction(newAction)
     setNewTitle('')
     setShowAddForm(false)
-    addToast({
-      type: 'success',
-      title: 'Action Added',
-      message: 'Logged personal mitigation step with positive impact!',
-    })
   }
 
   return (

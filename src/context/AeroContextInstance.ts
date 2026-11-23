@@ -28,6 +28,7 @@ export interface AeroContextType {
   setApiKey: (key: string) => void
   ecoActions: EcoAction[]
   toggleEcoAction: (id: string) => void
+  addEcoAction: (action: EcoAction) => void
   theme: 'dark' | 'light'
   toggleTheme: () => void
   corsiConfig: CorsiRosenthalConfig
